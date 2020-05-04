@@ -3,15 +3,22 @@ import request from 'superagent';
 import './App.css';
 import Container from './Container.js';
 import data from './data.js';
-
+import Searchbar from './Searchbar.js';
 
 
 export default class App extends Component {
   state = {
+    searchName: null,
     searchQuery: null,
     selected: '',
     data: [],
-    example: data.results
+    sort: 'pokemon'
+  }
+
+  handleName = (event) => {
+    const value = event.target.value;
+    this.setState({ searchName: value });
+    console.log(value);
   }
 
   handleChange = (event) => {
@@ -20,7 +27,7 @@ export default class App extends Component {
   }
 
   handleClick = async () => {
-    const fetchedData = await request.get('https://alchemy-pokedex.herokuapp.com/api/pokedex');
+    const fetchedData = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.searchName}&sort=${this.state.sort}`);
     this.setState({ data: fetchedData.body });
   }
 
@@ -28,13 +35,13 @@ render() {
   return (
     <div>
       <header>
-        <img src="logo192.png" alt="React Logo" />
         <h1>Pokemon Pokedex</h1>
       </header>
 
       <main>
         <section className="options">
           {/* lets move this to another component */}
+          <Searchbar search={this.handleName} submit={this.handleClick} />
           <select className="creature-type-filter" onChange={this.handleChange}>
             <option value="" defaultValue>
               All Types
@@ -64,7 +71,7 @@ render() {
 
         <section className="list-section">
           <ul className="creatures">
-            <Container data={this.state.example}/>
+            <Container data={this.state.data}/>
           </ul>
         </section>
       </main>
