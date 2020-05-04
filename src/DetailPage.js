@@ -23,7 +23,7 @@ export default class DetailPage extends Component {
                     this.state.loading
                         ? 'Don\'t freak out, okay?'
                         : <div className = 'detail'>
-                            <h3>Name: {this.state.pokemon.pokemon}</h3>
+                            <h2>Name: {this.state.pokemon.pokemon}</h2>
                             <img src={this.state.pokemon.url_image} alt={this.state.pokemon.pokemon} />
                             <h3>Shape: {this.state.pokemon.shape}</h3>
                             <h3>Attack: {this.state.pokemon.attack}</h3>

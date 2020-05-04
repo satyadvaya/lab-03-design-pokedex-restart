@@ -4,14 +4,14 @@
     box-sizing: border-box;
   }
   
-  .container {
+.container {
     background-color: darkseagreen;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
   }
   
-  .detail {
+.detail {
     background-color: blueviolet;
     width: 250px;
     height: 350px;
@@ -24,10 +24,14 @@
     align-items: center;
     }
 
-   h3 {
+h2 {
+    color: whitesmoke;
+}
+
+h3 {
         font-style: italic;
     }
   
-  img {
+img {
     width: 200px;
-  }
+    }
