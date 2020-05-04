@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import request from 'superagent';
-import Card from './Card.js';
+import './Detail.css';
 
 export default class DetailPage extends Component {
     state = { 
@@ -22,7 +22,7 @@ export default class DetailPage extends Component {
                 {
                     this.state.loading
                         ? 'Don\'t freak out, okay?'
-                        : <div>
+                        : <div className = 'detail'>
                             <h3>Name: {this.state.pokemon.pokemon}</h3>
                             <img src={this.state.pokemon.url_image} alt={this.state.pokemon.pokemon} />
                             <h3>Shape: {this.state.pokemon.shape}</h3>
