@@ -4,7 +4,7 @@ import Card from './Card.js';
 export default class Container extends Component {
     render() {
         return (
-            <div>
+            <div className='container'>
                 {this.props.data
                 .map(creature => {
                     return <Card pokemon={creature} />
