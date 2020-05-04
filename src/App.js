@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import request from 'superagent';
 import './App.css';
+import Container from './Container.js';
+import data from './data.js';
+
+
 
 export default class App extends Component {
   state = {
     searchQuery: null,
     selected: '',
-    data: []
+    data: [],
+    example: data.results
   }
 
   handleChange = (event) => {
@@ -18,27 +23,6 @@ export default class App extends Component {
     const fetchedData = await request.get('https://alchemy-pokedex.herokuapp.com/api/pokedex');
     this.setState({ data: fetchedData.body });
   }
-
-  render() {
-    // 1c2. log out the state on change;
-    // console.log('|| this.state.', this.state.searchQuery);
-    // 2a. log out my data (however I'm getting it);
-    // console.log('|| data', data);
-    return (     
-      <div>        
-        <input onChange={this.handleChange} />    
-        <button onClick={this.handleClick}>Search</button>
-        {
-          // 2.b1 map over hard-coded data in this.state data ...
-          this.state.data.map(type => {
-            // 2.b2 ... and make h1s for each item in the array;
-          return <h1>{type.character} : {type.type}</h1>
-          })
-        }
-      </div>
-    )
-  }
-}
 
 render() {
   return (
@@ -80,25 +64,10 @@ render() {
 
         <section className="list-section">
           <ul className="creatures">
-            {
-              creatureData
-                .filter(creature => {
-                  // if there is nothing selected, show ALL CREATURES
-                  if (!this.state.selected) return true;
-          
-                  // otherwise only show the creature if the creature type is the same as the selected creature type
-                  return creature.type === this.state.selected;
-                })
-                .map(animal => {
-                console.log(animal)
-                return <Creature bovid={animal} />
-                })        
-            }
+            <Container data={this.state.example}/>
           </ul>
         </section>
       </main>
     </div>
   );
-}
-
-export default App;
+}}
