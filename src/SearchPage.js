@@ -24,29 +24,22 @@ export default class App extends Component {
 
   componentDidMount = async () => {
     const searchParams = new URLSearchParams(window.location.search);
-    // searchParams will be pokemon=marsh&page=1
     const query = searchParams.get('pokemon');
-    // searchParams.get looks for the key 'pokemon' and returns the value associated with it.
-    // query will be 'marsh'
     this.setState({searchQuery: query});
-    // in state, searchQuery will be query (or marsh).
+
     if (query) {
     let page = 1;
     if (searchParams.get('page')){
     page = searchParams.get('page');
     }
-    // if there is a query, it will initialize the page number to 1. But if there is a key of 'page' in the search bar, // then it will reassign the page variable to what is in the searchParams.
+    
     const fetchedPokemon = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex/?pokemon=${query}&page=${page}`);
-    // grabs the information from the API according to the query value (string) and the page value (number)
     this.setState({ body: fetchedPokemon.body, pokemon: fetchedPokemon.body.results });
-    // adds the fetched information to state.
         } else {
           const fetchedPokemon = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex`);
           this.setState({ body: fetchedPokemon.body, pokemon: fetchedPokemon.body.results })
         }
-    // this else statement is the 'default.' If there are no existing search parameters, then it will show every Pokemon.
     }
-    // In short, this code makes it so that the first time someone loads the page, it checks the URL of the site, finds the search parameters, and generates an initial page. So if you give someone a link to something you searched, they will see the same results.
 
   handleName = (event) => {
     const value = event.target.value;
