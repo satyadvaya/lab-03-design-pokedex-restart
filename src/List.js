@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Card from './Card.js';
 
-export default class Container extends Component {
+export default class List extends Component {
     render() {
         return (
-            <div className='container'>
+            <div className='list'>
                 {this.props.data
                 .map(creature => {
                     return <Card pokemon={creature} />
