@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import request from 'superagent';
 import './Detail.css';
-import Header from './header'
+import Header from './Header'
 
 export default class DetailPage extends Component {
     state = { 

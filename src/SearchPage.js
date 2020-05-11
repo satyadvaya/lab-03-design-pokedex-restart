@@ -3,7 +3,7 @@ import request from 'superagent';
 import './App.css';
 import Container from './List.js';
 import Searchbar from './Searchbar.js';
-import Header from './header.js';
+import Header from './Header.js';
 
 export default class App extends Component {
   state = {

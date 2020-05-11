@@ -1,0 +1,9 @@
+.head {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  background-color: lightcoral;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
