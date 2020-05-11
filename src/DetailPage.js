@@ -29,6 +29,9 @@ export default class DetailPage extends Component {
                             <h3>Shape: {this.state.pokemon.shape}</h3>
                             <h3>Attack: {this.state.pokemon.attack}</h3>
                             <h3>Defense: {this.state.pokemon.defense}</h3>
+                            <h3>Height: {this.state.pokemon.height}</h3>
+                            <h3>Weight: {this.state.pokemon.weight}</h3>
+                            <h3>hp: {this.state.pokemon.hp}</h3>
                         </div>
                 }
             </div>

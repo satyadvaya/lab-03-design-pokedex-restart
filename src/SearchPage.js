@@ -18,22 +18,6 @@ export default class App extends Component {
     info: {}
   }
 
-// COMBINE SEARCH CONTAINER WITH SEARCHBAR
-// ADD A SORT DROPDOWN
-// VERIFY SEARCH QUERY WITH SORT
-// UPDATE CLICK BUTTON AND LOCATION
-// VERIFY BUTTON PAGINATION LOGIC
-// DISPLAY SEARCH PARAMS IN URL AND MAKE PERSISTENT
-// BUTTON UP CSS
-// HEADER AND NAVIGATION
-// FINISH REFACTORING
-
-
-  // async componentDidMount() {
-  //   const fetchedData = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex`);
-  //   this.setState({ data: fetchedData.body.results });
-  // }
-
   componentDidMount = async () => {
     const searchParams = new URLSearchParams(window.location.search);
     const query = searchParams.get('pokemon');
@@ -127,11 +111,15 @@ render() {
           </select>
 
         </section>
+
         <section className="list-section">
+
           <section className="creatures">
             <Container data={this.state.data}/>
           </section>
+          
         </section>
+
       </main>
     </div>
   );
