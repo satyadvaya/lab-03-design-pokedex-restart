@@ -3,6 +3,7 @@ import request from 'superagent';
 import './App.css';
 import Container from './List.js';
 import Searchbar from './Searchbar.js';
+import Header from './header.js';
 
 export default class App extends Component {
   state = {
@@ -62,10 +63,16 @@ export default class App extends Component {
     this.setState({ sort: value });
   }
 
+  handleChangeProperty = (event) => {
+    const value = event.target.value;
+    this.setState({ searchtype: value });
+  }
+
   handleClick = async () => {
-    console.log(`https://alchemy-pokedex.herokuapp.com/api/pokedex?${this.state.sort}=${this.state.search}`)
-    const fetchedData = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?${this.state.sort}=${this.state.search}`);
+    const search =`https://alchemy-pokedex.herokuapp.com/api/pokedex?sort=${this.state.sort}&${this.state.searchtype}=${this.state.search}`
+    const fetchedData = await request.get(search);
     this.setState({ data: fetchedData.body.results });
+    window.location.hash=search.split('?')[1]
   }
 
   backward = async () => {
@@ -98,17 +105,26 @@ export default class App extends Component {
 render() {
   return (
     <div>
-      <header>
-        <h1>Pokemon Pokedex</h1>
+      <Header></Header>
+
         {!this.state.hideBackward && <button onClick={this.backward}>Previous</button>}
         {!this.state.hideForward && <button onClick={this.forward}>Next</button>}
-      </header>
 
       <main>
         <section className="options">
 
-          <Searchbar name='name' search={this.handleName} submit={this.handleClick}
-          sort={this.handleChangeSort} />
+          <Searchbar name ={this.state.searchtype} search={this.handleName} submit={this.handleClick}
+          searchtype={this.handleChangeProperty} />
+
+          <select className="creature-type-filter" onChange={this.handleChangeSort}>
+            <option value="pokemon" defaultValue>
+            Pokemon
+            </option>
+            <option value="type">Type</option>
+            <option value="attack">Attack</option>
+            <option value="defense">Defense</option>
+            <option value="height">Height</option>
+          </select>
 
         </section>
         <section className="list-section">

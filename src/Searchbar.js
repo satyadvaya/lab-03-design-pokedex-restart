@@ -9,9 +9,7 @@ export default class Searchbar extends Component {
                 <input type='number' min='0' onChange={this.props.search} />
                 : <input onChange={this.props.search} />
                 }
-                <button onClick={this.props.submit}>Search {this.props.name}</button>
-
-                <select className="creature-type-filter" onChange={this.props.sort}>
+                <select className="creature-type-filter" onChange={this.props.searchtype}>
                 <option value="pokemon" defaultValue>
                 Pokemon
                 </option>
@@ -20,7 +18,7 @@ export default class Searchbar extends Component {
                 <option value="defense">Defense</option>
                 <option value="height">Height</option>
                 </select>
-
+                <button onClick={this.props.submit}>Search</button>
             </div>
         )
     }

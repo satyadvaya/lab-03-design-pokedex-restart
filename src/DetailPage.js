@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import request from 'superagent';
 import './Detail.css';
+import Header from './header'
 
 export default class DetailPage extends Component {
     state = { 
@@ -18,7 +19,7 @@ export default class DetailPage extends Component {
     render() {
         return (
             <div>
-                Welcome to the detail page!!
+                <Header />
                 {
                     this.state.loading
                         ? 'Don\'t freak out, okay?'
