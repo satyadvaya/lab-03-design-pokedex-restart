@@ -1,0 +1,37 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+  }
+  
+.container {
+    background-color: darkseagreen;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+  
+.detail {
+    background-color: blueviolet;
+    width: 250px;
+    height: 400px;
+    margin: 10px;
+    border-radius: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    }
+
+h2 {
+    color: whitesmoke;
+}
+
+h3 {
+        font-style: italic;
+    }
+  
+img {
+    width: 200px;
+    }
